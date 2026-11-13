@@ -1,6 +1,30 @@
+import com.aliucord.gradle.*
+import com.aliucord.gradle.tasks.*
+import com.android.build.gradle.internal.tasks.factory.dsl.*
+
 plugins {
-    alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.aliucord.plugin) apply true
-    alias(libs.plugins.ktlint) apply false
+    id("com.android.library")
+    id("com.aliucord.gradle")
+}
+
+android {
+    namespace = "com.aliucord.plugins.pasteandspam"
+    compileSdk = 34
+
+    defaultConfig {
+        minSdk = 26
+        targetSdk = 34
+    }
+}
+
+aliucord {
+    author("Freddy")
+    description("Adds a Paste button and Auto Spam menu to chat input.")
+    version = "1.0.0"
+    updateUrl = "https://github.com/Freddy/PasteAndSpam"
+}
+
+dependencies {
+    // Discord dependencies required for Aliucord plugins
+    compileOnly("com.discord:discord:126021")
 }
